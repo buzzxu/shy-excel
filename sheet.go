@@ -23,8 +23,14 @@ func newSheet(f *excelize.File, sheet *Sheet) error {
 	}
 	layout(f, sheet)
 	margins(f, sheet)
-	newHeader(f, sheet)
-	//newCell(f, sheetName, sheet)
+	startRow, colCount, err := newHeader(f, sheet)
+	if err != nil {
+		return err
+	}
+	err = newCell(f, sheet, startRow, colCount)
+	if err != nil {
+		return err
+	}
 	return nil
 }
 

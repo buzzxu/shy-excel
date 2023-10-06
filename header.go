@@ -44,24 +44,6 @@ func newHeader(f *excelize.File, sheet *Sheet) (int, int, error) {
 	startCol := 1
 	dept := sheet.Header.Depth()
 	setColumnTitle(f, sheet.Name, headerStyle, dept, columns, start, startCol)
-	//for _, column := range columns {
-	//	if column.Width > 0 {
-	//		colN, _ := excelize.ColumnNumberToName(colIndex)
-	//		if err := f.SetColWidth(sheetName, colN, colN, column.Width); err != nil {
-	//			return 0, 0, err
-	//		}
-	//	}
-	//	cell := axis(start, colIndex)
-	//
-	//	if err := f.SetCellStr(sheetName, cell, column.Title); err != nil {
-	//		return 0, 0, err
-	//	}
-	//	if err := f.SetCellStyle(sheetName, cell, cell, headerStyle); err != nil {
-	//		return 0, 0, err
-	//	}
-	//	colIndex++
-	//
-	//}
 
 	if _autoFilter := sheet.Header.AutoFilter != nil; _autoFilter {
 		x, _ := excelize.CoordinatesToCellName(1, start)
@@ -77,7 +59,7 @@ func newHeader(f *excelize.File, sheet *Sheet) (int, int, error) {
 		}
 	}
 
-	return start + dept, columnLength, nil
+	return (start + 1) + dept, columnLength, nil
 }
 
 func setColumnTitle(f *excelize.File, sheetName string, headerStyle int, dept int, columns []*Column, startRow int, startCol int) int {

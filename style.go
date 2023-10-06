@@ -5,6 +5,14 @@ import (
 	"github.com/xuri/excelize/v2"
 )
 
+type DefStyleKeys int16
+
+const (
+	DefStyleKeys_Link DefStyleKeys = 3
+)
+
+var DEF_STYLE map[DefStyleKeys]int
+
 var DEF_STYLE_BORDER = []excelize.Border{
 	{Type: "left", Color: "000000", Style: 1},
 	{Type: "top", Color: "000000", Style: 1},
@@ -14,6 +22,30 @@ var DEF_STYLE_BORDER = []excelize.Border{
 var DEF_STYLE_ALIGN = &excelize.Alignment{
 	Horizontal: "center",
 	Vertical:   "center",
+}
+
+var DEF_STYLE_HYPERLINK = &excelize.Style{
+	Font: &excelize.Font{Color: "1265BE", Underline: "single"},
+}
+
+func init() {
+	DEF_STYLE = make(map[DefStyleKeys]int)
+}
+
+// 获取默认样式
+func defStyle(key DefStyleKeys, f *excelize.File) int {
+	if style, ok := DEF_STYLE[DefStyleKeys_Link]; ok {
+		return style
+	} else {
+		var style int
+		switch key {
+		case DefStyleKeys_Link:
+			//默认链接样式
+			style, _ = f.NewStyle(DEF_STYLE_HYPERLINK)
+			DEF_STYLE[DefStyleKeys_Link] = style
+		}
+		return style
+	}
 }
 
 func defStyleHeader(f *excelize.File, font *excelize.Font) int {
