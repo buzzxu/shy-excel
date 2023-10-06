@@ -22,6 +22,7 @@ type Header struct {
 	FontHeaderSize *float64  `json:"font_header_size,omitempty"`
 	FontFamily     *string   `json:"font_family"`
 	AutoFilter     *bool     `json:"auto_filter,omitempty"`
+	dept           *int
 }
 
 type Column struct {
@@ -32,6 +33,7 @@ type Column struct {
 	Font    *Font     `json:"font,omitempty"`
 	Width   float64   `json:"width,omitempty"`
 	Columns []*Column `json:"columns,omitempty"`
+	dept    *int
 }
 
 type Sheet struct {
@@ -105,15 +107,46 @@ func (header *Header) Count() int {
 	return count
 }
 
+// Depth 获取列数的最大层级 用于合并header
+func (header *Header) Depth() int {
+	if header.dept != nil {
+		return *header.dept
+	}
+	var dept = 0
+	for _, column := range header.Columns {
+		if column.Columns != nil {
+			_dept := depth(column.Columns)
+			if _dept > dept {
+				dept = _dept
+			}
+		}
+	}
+	header.dept = &dept
+	return dept
+}
+
 func (header *Header) Keys() []string {
 	return nil
 }
 
-func (column *Column) IsColl() bool {
-	return column.Columns != nil && len(column.Columns) > 0
+func (column *Column) Depth() int {
+	if column.dept != nil {
+		return *column.dept
+	}
+	var dept = 0
+	for _, column := range column.Columns {
+		if column.Columns != nil {
+			_dept := depth(column.Columns)
+			if _dept > dept {
+				dept = _dept
+			}
+		}
+	}
+	column.dept = &dept
+	return dept
 }
 
-// 递归结算数量
+// countColumns 递归结算数量
 func countColumns(columns []*Column) int {
 	count := 0
 	for _, column := range columns {
@@ -124,4 +157,15 @@ func countColumns(columns []*Column) int {
 		}
 	}
 	return count
+}
+
+func depth(columns []*Column) int {
+	maxDepth := 0
+	for _, column := range columns {
+		d := depth(column.Columns)
+		if d+1 > maxDepth {
+			maxDepth = d + 1
+		}
+	}
+	return maxDepth
 }

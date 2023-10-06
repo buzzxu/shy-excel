@@ -25,6 +25,7 @@ func NewTable(table *Table) *excelize.File {
 		}
 	}
 	if (len(*table) == 1 && (*table)[0].Name != "Sheet1") || (len(*table) > 1 && !active) {
+		//默认取第一个sheet
 		setActiveSheet(f, (*table)[0].Name)
 		f.DeleteSheet("Sheet1")
 	}

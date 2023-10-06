@@ -11,33 +11,43 @@
         {
           "name": "index",
           "title": "序号",
-          "type": "index"
+          "type": "index",
+          "merge": true
         },
         {
           "name": "orderNumber",
           "title": "订单编号",
           "type": "string",
+          "merge": true,
           "width": 15
         },
         {
           "name": "amount",
           "title": "金额",
-          "type": "numeric"
+          "type": "numeric",
+          "merge": true
         },
         {
           "name": "number",
           "title": "数量",
-          "type": "numeric"
+          "type": "numeric",
+          "merge": true
         },
         {
-          "name": "productName",
-          "title": "产品名称",
-          "type": "string"
-        },
-        {
-          "name": "price",
-          "title": "单价",
-          "type": "numeric"
+          "name": "items",
+          "title": "明细",
+          "columns": [
+            {
+              "name": "productName",
+              "title": "产品名称",
+              "type": "string"
+            },
+            {
+              "name": "price",
+              "title": "单价",
+              "type": "numeric"
+            }
+          ]
         }
       ],
       "style": {

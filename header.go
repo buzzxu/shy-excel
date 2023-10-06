@@ -42,7 +42,8 @@ func newHeader(f *excelize.File, sheet *Sheet) (int, int, error) {
 
 	//列头
 	startCol := 1
-	setColumnTitle(f, sheet.Name, headerStyle, columns, start, startCol)
+	dept := sheet.Header.Depth()
+	setColumnTitle(f, sheet.Name, headerStyle, dept, columns, start, startCol)
 	//for _, column := range columns {
 	//	if column.Width > 0 {
 	//		colN, _ := excelize.ColumnNumberToName(colIndex)
@@ -79,7 +80,7 @@ func newHeader(f *excelize.File, sheet *Sheet) (int, int, error) {
 	return start, columnLength, nil
 }
 
-func setColumnTitle(f *excelize.File, sheetName string, headerStyle int, columns []*Column, startRow int, startCol int) int {
+func setColumnTitle(f *excelize.File, sheetName string, headerStyle int, dept int, columns []*Column, startRow int, startCol int) int {
 	colIndex := startCol
 	for _, column := range columns {
 		if column.Width > 0 {
@@ -97,13 +98,20 @@ func setColumnTitle(f *excelize.File, sheetName string, headerStyle int, columns
 			fmt.Println(err)
 		}
 		if len(column.Columns) > 0 {
-			colIndex += setColumnTitle(f, sheetName, headerStyle, column.Columns, startRow+1, colIndex)
+			colIndex += setColumnTitle(f, sheetName, headerStyle, column.Depth(), column.Columns, startRow+1, colIndex)
 			vCell := axis(startRow, colIndex-1)
 			f.MergeCell(sheetName, cell, vCell)
 			if err := f.SetCellStyle(sheetName, cell, vCell, headerStyle); err != nil {
 				fmt.Println(err)
 			}
 		} else {
+			if column.Merge || dept > 0 {
+				vCell := axis(startRow+dept, colIndex)
+				f.MergeCell(sheetName, cell, vCell)
+				if err := f.SetCellStyle(sheetName, cell, vCell, headerStyle); err != nil {
+					fmt.Println(err)
+				}
+			}
 			colIndex++
 		}
 	}
