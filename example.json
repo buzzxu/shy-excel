@@ -55,31 +55,15 @@
         "orderNumber": "S12323123",
         "amount": 23.4,
         "number": 1,
-        "items": [
-          {
-            "productName": "白板",
-            "price": 12.2
-          },
-          {
-            "productName": "钢笔",
-            "price": 1.02
-          }
-        ]
+        "productName": "白板",
+        "price": 12.2
       },
       {
         "orderNumber": "S12323153",
         "amount": 107.21,
         "number": 2,
-        "items": [
-          {
-            "productName": "灯箱",
-            "price": 100.2
-          },
-          {
-            "productName": "海报",
-            "price": 7.01
-          }
-        ]
+        "productName": "灯箱",
+        "price": 100.2
       }
     ]
   }

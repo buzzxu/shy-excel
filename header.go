@@ -77,7 +77,7 @@ func newHeader(f *excelize.File, sheet *Sheet) (int, int, error) {
 		}
 	}
 
-	return start, columnLength, nil
+	return start + dept, columnLength, nil
 }
 
 func setColumnTitle(f *excelize.File, sheetName string, headerStyle int, dept int, columns []*Column, startRow int, startCol int) int {
