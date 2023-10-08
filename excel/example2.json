@@ -86,12 +86,29 @@
         "items": [
           {
             "productName": "白板",
-            "price": 12.2
+            "price": 12.2,
+            "images": [
+              {
+                "image1": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
+              },
+              {
+                "image2": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
+              }
+            ]
           },
           {
             "productName": "钢笔",
-            "price": 1.02
+            "price": 1.02,
+            "images": [
+              {
+                "image1": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
+              },
+              {
+                "image2": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
+              }
+            ]
           }
+
         ]
       },
       {
@@ -101,11 +118,27 @@
         "items": [
           {
             "productName": "灯箱",
-            "price": 100.2
+            "price": 100.2,
+            "images": [
+              {
+                "image1": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
+              },
+              {
+                "image2": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
+              }
+            ]
           },
           {
             "productName": "海报",
-            "price": 7.01
+            "price": 7.01,
+            "images": [
+              {
+                "image1": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
+              },
+              {
+                "image2": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
+              }
+            ]
           }
         ]
       }

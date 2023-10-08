@@ -1,4 +1,4 @@
-package shy_excel
+package excel
 
 import (
 	"fmt"
@@ -27,7 +27,7 @@ func newSheet(f *excelize.File, sheet *Sheet) error {
 	if err != nil {
 		return err
 	}
-	err = newCell(f, sheet, startRow, colCount)
+	err = newRows(f, sheet, startRow, colCount)
 	if err != nil {
 		return err
 	}

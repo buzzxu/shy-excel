@@ -1,4 +1,4 @@
-package shy_excel
+package excel
 
 import (
 	"fmt"

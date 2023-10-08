@@ -1,4 +1,4 @@
-package shy_excel
+package excel
 
 import (
 	"fmt"
@@ -8,7 +8,8 @@ import (
 type DefStyleKeys int16
 
 const (
-	DefStyleKeys_Link DefStyleKeys = 3
+	DefStyleKeys_Link      DefStyleKeys = 3
+	DefStyleKeys_Merge_ROW DefStyleKeys = 4
 )
 
 var DEF_STYLE map[DefStyleKeys]int
@@ -28,6 +29,12 @@ var DEF_STYLE_HYPERLINK = &excelize.Style{
 	Font: &excelize.Font{Color: "1265BE", Underline: "single"},
 }
 
+var DEF_STYLE_MERGE_ROW = &excelize.Style{
+	Alignment: &excelize.Alignment{
+		Vertical: "center",
+	},
+}
+
 func init() {
 	DEF_STYLE = make(map[DefStyleKeys]int)
 }
@@ -42,6 +49,10 @@ func defStyle(key DefStyleKeys, f *excelize.File) int {
 		case DefStyleKeys_Link:
 			//默认链接样式
 			style, _ = f.NewStyle(DEF_STYLE_HYPERLINK)
+			DEF_STYLE[DefStyleKeys_Link] = style
+		case DefStyleKeys_Merge_ROW:
+			//默认合并单元格样式
+			style, _ = f.NewStyle(DEF_STYLE_MERGE_ROW)
 			DEF_STYLE[DefStyleKeys_Link] = style
 		}
 		return style

@@ -1,4 +1,4 @@
-package shy_excel
+package excel
 
 import (
 	jsoniter "github.com/json-iterator/go"

@@ -1,4 +1,4 @@
-package shy_excel
+package excel
 
 type Type string
 
@@ -9,6 +9,7 @@ const (
 	TypeTime      Type = "datetime"
 	TypeBool      Type = "bool"
 	TypeHyperLink Type = "hyperLink"
+	TypeImage     Type = "image"
 )
 
 type Header struct {
@@ -36,6 +37,9 @@ type Column struct {
 	dept    *int
 }
 
+type Data interface {
+	map[string]interface{}
+}
 type Sheet struct {
 	Name    string                    `json:"name,omitempty"`
 	Header  *Header                   `json:"header"`
