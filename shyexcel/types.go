@@ -1,4 +1,4 @@
-package excel
+package shyexcel
 
 type Type string
 
