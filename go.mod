@@ -1,4 +1,4 @@
-module shyexcel
+module github.com/buzzxu/shy-excel
 
 go 1.21
 
