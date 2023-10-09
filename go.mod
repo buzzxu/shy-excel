@@ -1,4 +1,4 @@
-module shy-excel
+module shyexcel
 
 go 1.21
 
