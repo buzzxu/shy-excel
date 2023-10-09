@@ -33,3 +33,11 @@ func Test_NewTable2(t *testing.T) {
 		fmt.Println(err)
 	}
 }
+
+func TestNewHTTP(t *testing.T) {
+	f, err := NewHTTP("https://file.xw-jd.com/static/shy-excel/example.json", "GET", nil)
+	err = f.SaveAs("example_http.xlsx")
+	if err != nil {
+		fmt.Println(err)
+	}
+}

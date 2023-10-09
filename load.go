@@ -47,7 +47,7 @@ func HTTP(url, method string, funcHeader func(header http.Header)) (*Table, erro
 		return nil, err
 	}
 	if resp != nil && resp.Body != nil {
-		resp.Body.Close()
+		defer resp.Body.Close()
 	}
 	if resp.StatusCode == 200 {
 		b, err := io.ReadAll(resp.Body)
