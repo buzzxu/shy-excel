@@ -1,147 +1,149 @@
-[
-  {
-    "header": {
-      "title": "订单列表",
-      "freezeCol": 2,
-      "font_family": "仿宋",
-      "font_title_size" : 14,
-      "font_header_size": 12,
-      "font_column_size": 12,
-      "columns": [
+{
+  "sheets": [
+    {
+      "header": {
+        "title": "订单列表",
+        "freezeCol": 2,
+        "font_family": "仿宋",
+        "font_title_size" : 14,
+        "font_header_size": 12,
+        "font_column_size": 12,
+        "columns": [
+          {
+            "name": "index",
+            "title": "序号",
+            "type": "index",
+            "merge": true
+          },
+          {
+            "name": "orderNumber",
+            "title": "订单编号",
+            "type": "string",
+            "merge": true,
+            "width": 15
+          },
+          {
+            "name": "amount",
+            "title": "金额",
+            "type": "numeric",
+            "merge": true
+          },
+          {
+            "name": "number",
+            "title": "数量",
+            "type": "numeric",
+            "merge": true
+          },
+          {
+            "name": "items",
+            "title": "明细",
+            "columns": [
+              {
+                "name": "productName",
+                "title": "产品名称",
+                "type": "string",
+                "merge": true
+              },
+              {
+                "name": "price",
+                "title": "单价",
+                "type": "numeric",
+                "merge": true
+              },
+              {
+                "name": "images",
+                "title": "图片",
+                "columns": [
+                  {
+                    "name": "image1",
+                    "title": "图片1",
+                    "type": "string"
+                  },
+                  {
+                    "name": "image2",
+                    "title": "图片2",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "style": {
+
+        }
+      },
+      "layout": {
+
+      },
+      "margins": {
+
+      },
+      "data": [
         {
-          "name": "index",
-          "title": "序号",
-          "type": "index",
-          "merge": true
-        },
-        {
-          "name": "orderNumber",
-          "title": "订单编号",
-          "type": "string",
-          "merge": true,
-          "width": 15
-        },
-        {
-          "name": "amount",
-          "title": "金额",
-          "type": "numeric",
-          "merge": true
-        },
-        {
-          "name": "number",
-          "title": "数量",
-          "type": "numeric",
-          "merge": true
-        },
-        {
-          "name": "items",
-          "title": "明细",
-          "columns": [
+          "orderNumber": "S12323123",
+          "amount": 23.4,
+          "number": 1,
+          "items": [
             {
-              "name": "productName",
-              "title": "产品名称",
-              "type": "string",
-              "merge": true
-            },
-            {
-              "name": "price",
-              "title": "单价",
-              "type": "numeric",
-              "merge": true
-            },
-            {
-              "name": "images",
-              "title": "图片",
-              "columns": [
+              "productName": "白板",
+              "price": 12.2,
+              "images": [
                 {
-                  "name": "image1",
-                  "title": "图片1",
-                  "type": "string"
+                  "image1": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
                 },
                 {
-                  "name": "image2",
-                  "title": "图片2",
-                  "type": "string"
+                  "image2": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
+                }
+              ]
+            },
+            {
+              "productName": "钢笔",
+              "price": 1.02,
+              "images": [
+                {
+                  "image1": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
+                },
+                {
+                  "image2": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
+                }
+              ]
+            }
+
+          ]
+        },
+        {
+          "orderNumber": "S12323153",
+          "amount": 107.21,
+          "number": 2,
+          "items": [
+            {
+              "productName": "灯箱",
+              "price": 100.2,
+              "images": [
+                {
+                  "image1": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
+                },
+                {
+                  "image2": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
+                }
+              ]
+            },
+            {
+              "productName": "海报",
+              "price": 7.01,
+              "images": [
+                {
+                  "image1": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
+                },
+                {
+                  "image2": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
                 }
               ]
             }
           ]
         }
-      ],
-      "style": {
-
-      }
-    },
-    "layout": {
-
-    },
-    "margins": {
-
-    },
-    "data": [
-      {
-        "orderNumber": "S12323123",
-        "amount": 23.4,
-        "number": 1,
-        "items": [
-          {
-            "productName": "白板",
-            "price": 12.2,
-            "images": [
-              {
-                "image1": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
-              },
-              {
-                "image2": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
-              }
-            ]
-          },
-          {
-            "productName": "钢笔",
-            "price": 1.02,
-            "images": [
-              {
-                "image1": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
-              },
-              {
-                "image2": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
-              }
-            ]
-          }
-
-        ]
-      },
-      {
-        "orderNumber": "S12323153",
-        "amount": 107.21,
-        "number": 2,
-        "items": [
-          {
-            "productName": "灯箱",
-            "price": 100.2,
-            "images": [
-              {
-                "image1": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
-              },
-              {
-                "image2": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
-              }
-            ]
-          },
-          {
-            "productName": "海报",
-            "price": 7.01,
-            "images": [
-              {
-                "image1": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
-              },
-              {
-                "image2": "https://mgjobs.mxbc.net/kf@278725@4Sr6Nd@606@kf31.jpg"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-]
+      ]
+    }
+  ]
+}

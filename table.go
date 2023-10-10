@@ -27,7 +27,8 @@ func NewHTTP(url, method string, funcHeader func(header http.Header)) (*excelize
 func NewTable(table *Table) *excelize.File {
 	f := excelize.NewFile()
 	active := false
-	for _, sheet := range *table {
+	sheets := table.Sheets
+	for _, sheet := range sheets {
 		err := newSheet(f, sheet)
 		if err != nil {
 			fmt.Println(err)
@@ -43,9 +44,9 @@ func NewTable(table *Table) *excelize.File {
 			active = true
 		}
 	}
-	if (len(*table) == 1 && (*table)[0].Name != "Sheet1") || (len(*table) > 1 && !active) {
+	if (len(sheets) == 1 && (sheets)[0].Name != "Sheet1") || (len(sheets) > 1 && !active) {
 		//默认取第一个sheet
-		setActiveSheet(f, (*table)[0].Name)
+		setActiveSheet(f, (sheets)[0].Name)
 		f.DeleteSheet("Sheet1")
 	}
 	return f

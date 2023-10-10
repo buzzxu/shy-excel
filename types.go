@@ -97,7 +97,9 @@ type Fill struct {
 	Color   *[]string `json:"color,omitempty"`
 	Shading *int      `json:"shading,omitempty"`
 }
-type Table []*Sheet
+type Table struct {
+	Sheets []*Sheet `json:"sheets,omitempty"`
+}
 
 func (header *Header) Count() int {
 	count := 0
