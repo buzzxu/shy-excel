@@ -4,7 +4,6 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	jsoniter "github.com/json-iterator/go"
 	"io"
 	"net/http"
 	"os"
@@ -15,26 +14,10 @@ func File(file string) (*Table, error) {
 	if err != nil {
 		return nil, err
 	}
-	var table = &Table{}
-	var json = jsoniter.ConfigCompatibleWithStandardLibrary
-	err = json.Unmarshal(bytes, table)
-	if err != nil {
-		return nil, err
-	}
-	return table, nil
+	return Json(bytes)
 }
 
-func JSON(str string) (*Table, error) {
-	var table = &Table{}
-	var json = jsoniter.ConfigCompatibleWithStandardLibrary
-	err := json.Unmarshal([]byte(str), table)
-	if err != nil {
-		return nil, err
-	}
-	return table, nil
-}
-
-func HTTP(url, method string, funcHeader func(header http.Header)) (*Table, error) {
+func Http(url, method string, responseType ResponseType, funcHeader func(header http.Header)) (*Table, error) {
 	req, err := http.NewRequestWithContext(context.Background(), method, url, nil)
 	if err != nil {
 		return nil, err
@@ -54,13 +37,14 @@ func HTTP(url, method string, funcHeader func(header http.Header)) (*Table, erro
 		if err != nil {
 			return nil, err
 		}
-		var json = jsoniter.ConfigCompatibleWithStandardLibrary
-		var table = &Table{}
-		err = json.Unmarshal(b, table)
-		if err != nil {
-			return nil, err
+		switch responseType {
+		case JSON:
+			return Json(b)
+		case MsgPack:
+			return Msgpack(b)
+		default:
+			return Json(b)
 		}
-		return table, nil
 	}
 	return nil, errors.New(fmt.Sprintf("http resp code: %d", resp.StatusCode))
 }

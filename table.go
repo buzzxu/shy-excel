@@ -6,9 +6,9 @@ import (
 	"net/http"
 )
 
-// NewJSON 通过JSON数据生成表格
-func NewJSON(json string) (*excelize.File, error) {
-	table, err := JSON(json)
+// JsonToTable 通过JSON数据生成表格
+func JsonToTable(json string) (*excelize.File, error) {
+	table, err := Json([]byte(json))
 	if err != nil {
 		return nil, err
 	}
@@ -16,8 +16,8 @@ func NewJSON(json string) (*excelize.File, error) {
 }
 
 // NewHTTP 通过Http请求生成表格
-func NewHTTP(url, method string, funcHeader func(header http.Header)) (*excelize.File, error) {
-	table, err := HTTP(url, method, funcHeader)
+func NewHTTP(url, method string, responseType ResponseType, funcHeader func(header http.Header)) (*excelize.File, error) {
+	table, err := Http(url, method, responseType, funcHeader)
 	if err != nil {
 		return nil, err
 	}
