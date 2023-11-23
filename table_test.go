@@ -34,6 +34,26 @@ func Test_NewTable2(t *testing.T) {
 	}
 }
 
+func Test_NewTable3(t *testing.T) {
+
+	table, err := File("./example3.json")
+	f := NewTable(table)
+	err = f.SaveAs("example3.xlsx")
+	if err != nil {
+		fmt.Println(err)
+	}
+}
+
+func Test_NewTable4(t *testing.T) {
+
+	table, err := File("./example4.json")
+	f := NewTable(table)
+	err = f.SaveAs("example4.xlsx")
+	if err != nil {
+		fmt.Println(err)
+	}
+}
+
 func TestNewHTTP(t *testing.T) {
 	f, err := NewHTTP("https://file.xw-jd.com/static/shy-excel/example.json", "GET", JSON, nil)
 	err = f.SaveAs("example_http.xlsx")

@@ -65,20 +65,27 @@ func newRow(option *rowOption) (int, error) {
 			}
 		} else {
 			cell := axis(startRow, option.startCol+1)
-			switch col.Type {
-			case TypeIndex:
+			if col.Type == TypeIndex {
 				err = option.f.SetCellInt(option.sheetName, cell, option.index+1)
-			case TypeHyperLink:
+			} else {
 				value := option.rowData[col.Name]
-				v := value.(string)
-				err = option.f.SetCellHyperLink(option.sheetName, cell, v, "External")
-				err = option.f.SetCellStyle(option.sheetName, cell, cell, defStyle(DefStyleKeys_Link, option.f))
-				err = option.f.SetCellStr(option.sheetName, cell, v)
-			case TypeImage:
-				//todo
-			default:
-				err = option.f.SetCellValue(option.sheetName, cell, option.rowData[col.Name])
+				if value == nil {
+					err = option.f.SetCellValue(option.sheetName, cell, "")
+				} else {
+					switch col.Type {
+					case TypeHyperLink:
+						v := value.(string)
+						err = option.f.SetCellHyperLink(option.sheetName, cell, v, "External")
+						err = option.f.SetCellStyle(option.sheetName, cell, cell, defStyle(DefStyleKeys_Link, option.f))
+						err = option.f.SetCellStr(option.sheetName, cell, v)
+					case TypeImage:
+						//todo
+					default:
+						err = option.f.SetCellValue(option.sheetName, cell, value)
+					}
+				}
 			}
+
 			if option.merge {
 				//如果需要合并 获取当前行数据中 集合的最大数量
 				//todo 未处理多级
