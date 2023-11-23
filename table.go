@@ -7,29 +7,29 @@ import (
 )
 
 // JsonToTable 通过JSON数据生成表格
-func JsonToTable(json string) (*excelize.File, error) {
+func JsonToTable(json string, consumer func(int, map[string]interface{})) (*excelize.File, error) {
 	table, err := Json([]byte(json))
 	if err != nil {
 		return nil, err
 	}
-	return NewTable(table), nil
+	return NewTable(table, consumer), nil
 }
 
 // NewHTTP 通过Http请求生成表格
-func NewHTTP(url, method string, responseType ResponseType, funcHeader func(header http.Header)) (*excelize.File, error) {
+func NewHTTP(url, method string, responseType ResponseType, funcHeader func(header http.Header), consumer func(int, map[string]interface{})) (*excelize.File, error) {
 	table, err := Http(url, method, responseType, funcHeader)
 	if err != nil {
 		return nil, err
 	}
-	return NewTable(table), nil
+	return NewTable(table, consumer), nil
 }
 
-func NewTable(table *Table) *excelize.File {
+func NewTable(table *Table, consumer func(int, map[string]interface{})) *excelize.File {
 	f := excelize.NewFile()
 	active := false
 	sheets := table.Sheets
 	for _, sheet := range sheets {
-		err := newSheet(f, sheet)
+		err := newSheet(f, sheet, consumer)
 		if err != nil {
 			fmt.Println(err)
 			return nil

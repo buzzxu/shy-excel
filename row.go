@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-func newRows(f *excelize.File, sheet *Sheet, startRow, keysCount int) error {
+func newRows(f *excelize.File, sheet *Sheet, startRow, keysCount int, consumer func(int, map[string]interface{})) error {
 	//empty data return
 	if sheet.Data == nil || len(*sheet.Data) == 0 {
 		return nil
@@ -18,6 +18,7 @@ func newRows(f *excelize.File, sheet *Sheet, startRow, keysCount int) error {
 	var err error
 	for index, rowData := range *sheet.Data {
 		var startCol = 0
+		consumer(index, rowData)
 		startRow, err = newRow(&rowOption{
 			f:         f,
 			sheetName: sheet.Name,
