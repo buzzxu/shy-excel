@@ -7,7 +7,7 @@ import (
 )
 
 // JsonToTable 通过JSON数据生成表格
-func JsonToTable(json string, consumer func(int, map[string]interface{})) (*excelize.File, error) {
+func JsonToTable(json string, consumer func(int, int)) (*excelize.File, error) {
 	table, err := Json([]byte(json))
 	if err != nil {
 		return nil, err
@@ -16,7 +16,7 @@ func JsonToTable(json string, consumer func(int, map[string]interface{})) (*exce
 }
 
 // NewHTTP 通过Http请求生成表格
-func NewHTTP(url, method string, responseType ResponseType, funcHeader func(header http.Header), consumer func(int, map[string]interface{})) (*excelize.File, error) {
+func NewHTTP(url, method string, responseType ResponseType, funcHeader func(header http.Header), consumer func(int, int)) (*excelize.File, error) {
 	table, err := Http(url, method, responseType, funcHeader)
 	if err != nil {
 		return nil, err
@@ -24,12 +24,12 @@ func NewHTTP(url, method string, responseType ResponseType, funcHeader func(head
 	return NewTable(table, consumer), nil
 }
 
-func NewTable(table *Table, consumer func(int, map[string]interface{})) *excelize.File {
+func NewTable(table *Table, consumer func(int, int)) *excelize.File {
 	f := excelize.NewFile()
 	active := false
 	sheets := table.Sheets
-	for _, sheet := range sheets {
-		err := newSheet(f, sheet, consumer)
+	for _index, sheet := range sheets {
+		err := newSheet(f, _index, sheet, consumer)
 		if err != nil {
 			fmt.Println(err)
 			return nil

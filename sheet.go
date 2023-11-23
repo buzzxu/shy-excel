@@ -5,7 +5,7 @@ import (
 	"github.com/xuri/excelize/v2"
 )
 
-func newSheet(f *excelize.File, sheet *Sheet, consumer func(int, map[string]interface{})) error {
+func newSheet(f *excelize.File, sheetIndex int, sheet *Sheet, consumer func(int, int)) error {
 	if sheet.Name == "" {
 		sheet.Name = "Sheet1"
 	}
@@ -27,7 +27,7 @@ func newSheet(f *excelize.File, sheet *Sheet, consumer func(int, map[string]inte
 	if err != nil {
 		return err
 	}
-	err = newRows(f, sheet, startRow, colCount, consumer)
+	err = newRows(f, sheetIndex, sheet, startRow, colCount, consumer)
 	if err != nil {
 		return err
 	}
