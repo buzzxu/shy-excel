@@ -37,6 +37,7 @@
           {
             "name": "items",
             "title": "明细",
+            "collection": true,
             "columns": [
               {
                 "name": "productName",
@@ -53,6 +54,7 @@
               {
                 "name": "images",
                 "title": "图片",
+                "collection": true,
                 "columns": [
                   {
                     "name": "image1",

@@ -37,6 +37,7 @@
           {
             "name": "items",
             "title": "明细",
+            "collection": true,
             "columns": [
               {
                 "name": "productName",

@@ -1,0 +1,622 @@
+{
+  "sheets": [
+    {
+      "name": "订单",
+      "visible": true,
+      "header": {
+        "title": "订单列表",
+        "freezeCol": 2,
+        "columns": [
+          {
+            "name": "index",
+            "title": "序号",
+            "type": "index",
+            "merge": true,
+            "width": 0.0,
+            "collection": false
+          },
+          {
+            "name": "orderNumber",
+            "title": "订单编号",
+            "type": "string",
+            "merge": true,
+            "width": 25.0,
+            "collection": false
+          },
+          {
+            "name": "brand",
+            "title": "品牌",
+            "type": "string",
+            "merge": true,
+            "width": 15.0,
+            "collection": false
+          },
+          {
+            "name": "company",
+            "title": "所属公司",
+            "type": "string",
+            "merge": true,
+            "width": 35.0,
+            "collection": false
+          },
+          {
+            "name": "shopCode",
+            "title": "门头编号",
+            "type": "string",
+            "merge": true,
+            "width": 15.0,
+            "collection": false
+          },
+          {
+            "name": "payMethod",
+            "title": "支付方式",
+            "type": "string",
+            "merge": true,
+            "width": 15.0,
+            "collection": false
+          },
+          {
+            "name": "settleMethod",
+            "title": "结算方式",
+            "type": "string",
+            "merge": true,
+            "width": 15.0,
+            "collection": false
+          },
+          {
+            "name": "amount",
+            "title": "总金额",
+            "type": "string",
+            "merge": true,
+            "width": 15.0,
+            "collection": false
+          },
+          {
+            "name": "number",
+            "title": "购买数量",
+            "type": "string",
+            "merge": true,
+            "width": 10.0,
+            "collection": false
+          },
+          {
+            "name": "consignee",
+            "title": "收货人",
+            "type": "string",
+            "merge": true,
+            "width": 10.0,
+            "collection": false
+          },
+          {
+            "name": "phone",
+            "title": "联系电话",
+            "type": "string",
+            "merge": true,
+            "width": 15.0,
+            "collection": false
+          },
+          {
+            "name": "time",
+            "title": "下单时间",
+            "type": "string",
+            "merge": true,
+            "width": 20.0,
+            "collection": false
+          },
+          {
+            "name": "approvalTime",
+            "title": "审核时间",
+            "type": "string",
+            "merge": true,
+            "width": 20.0,
+            "collection": false
+          },
+          {
+            "name": "payTime",
+            "title": "支付时间",
+            "type": "string",
+            "merge": true,
+            "width": 20.0,
+            "collection": false
+          },
+          {
+            "name": "deliveredTime",
+            "title": "发货时间",
+            "type": "string",
+            "merge": true,
+            "width": 20.0,
+            "collection": false
+          },
+          {
+            "name": "remarks",
+            "title": "备注",
+            "type": "string",
+            "merge": true,
+            "width": 20.0,
+            "collection": false
+          },
+          {
+            "name": "orderInfos",
+            "title": "子订单",
+            "merge": false,
+            "width": 0.0,
+            "collection": true,
+            "columns": [
+              {
+                "name": "index",
+                "title": "序号",
+                "type": "index",
+                "merge": true,
+                "width": 0.0,
+                "collection": false
+              },
+              {
+                "name": "parentOrderNumber",
+                "title": "父订单编号",
+                "type": "string",
+                "merge": true,
+                "width": 25.0,
+                "collection": false
+              },
+              {
+                "name": "orderNumber",
+                "title": "订单编号",
+                "type": "string",
+                "merge": true,
+                "width": 25.0,
+                "collection": false
+              },
+              {
+                "name": "billingCycle",
+                "title": "账单编号",
+                "type": "string",
+                "merge": true,
+                "width": 25.0,
+                "collection": false
+              },
+              {
+                "name": "brand",
+                "title": "品牌",
+                "type": "string",
+                "merge": true,
+                "width": 15.0,
+                "collection": false
+              },
+              {
+                "name": "company",
+                "title": "所属公司",
+                "type": "string",
+                "merge": true,
+                "width": 30.0,
+                "collection": false
+              },
+              {
+                "name": "supplier",
+                "title": "厂家",
+                "type": "string",
+                "merge": true,
+                "width": 30.0,
+                "collection": false
+              },
+              {
+                "name": "shopCode",
+                "title": "门头编号",
+                "type": "string",
+                "merge": true,
+                "width": 20.0,
+                "collection": false
+              },
+              {
+                "name": "payMethod",
+                "title": "支付方式",
+                "type": "string",
+                "merge": true,
+                "width": 15.0,
+                "collection": false
+              },
+              {
+                "name": "settleMethod",
+                "title": "结算方式",
+                "type": "string",
+                "merge": true,
+                "width": 15.0,
+                "collection": false
+              },
+              {
+                "name": "amount",
+                "title": "订单金额",
+                "type": "string",
+                "merge": true,
+                "width": 15.0,
+                "collection": false
+              },
+              {
+                "name": "settleAmount",
+                "title": "结算金额",
+                "type": "string",
+                "merge": true,
+                "width": 15.0,
+                "collection": false
+              },
+              {
+                "name": "refundAmount",
+                "title": "退款金额",
+                "type": "string",
+                "merge": true,
+                "width": 15.0,
+                "collection": false
+              },
+              {
+                "name": "number",
+                "title": "购买数量",
+                "type": "string",
+                "merge": true,
+                "width": 10.0,
+                "collection": false
+              },
+              {
+                "name": "shippedNumber",
+                "title": "已发货数量",
+                "type": "string",
+                "merge": true,
+                "width": 10.0,
+                "collection": false
+              },
+              {
+                "name": "consignee",
+                "title": "收货人",
+                "type": "string",
+                "merge": true,
+                "width": 10.0,
+                "collection": false
+              },
+              {
+                "name": "phone",
+                "title": "联系电话",
+                "type": "string",
+                "merge": true,
+                "width": 15.0,
+                "collection": false
+              },
+              {
+                "name": "address",
+                "title": "收货地址",
+                "type": "string",
+                "merge": true,
+                "width": 35.0,
+                "wrap":true,
+                "collection": false
+              },
+              {
+                "name": "time",
+                "title": "下单时间",
+                "type": "string",
+                "merge": true,
+                "width": 20.0,
+                "collection": false
+              },
+              {
+                "name": "payTime",
+                "title": "支付时间",
+                "type": "string",
+                "merge": true,
+                "width": 20.0,
+                "collection": false
+              },
+              {
+                "name": "deliveredTime",
+                "title": "发货时间",
+                "type": "string",
+                "merge": true,
+                "width": 20.0,
+                "collection": false
+              },
+              {
+                "name": "signedTime",
+                "title": "签收时间",
+                "type": "string",
+                "merge": true,
+                "width": 20.0,
+                "collection": false
+              },
+              {
+                "name": "settlementTime",
+                "title": "结算时间",
+                "type": "string",
+                "merge": true,
+                "width": 20.0,
+                "collection": false
+              },
+              {
+                "name": "remarks",
+                "title": "备注",
+                "type": "string",
+                "merge": true,
+                "width": 20.0,
+                "collection": false
+              },
+              {
+                "name": "items",
+                "title": "明细",
+                "merge": false,
+                "width": 0.0,
+                "collection": true,
+                "columns": [
+                  {
+                    "name": "productName",
+                    "title": "产品名称",
+                    "type": "string",
+                    "width": 35.0,
+                    "collection": false
+                  },
+                  {
+                    "name": "unit",
+                    "title": "价格",
+                    "type": "string",
+                    "width": 15.0,
+                    "collection": false
+                  },
+                  {
+                    "name": "number",
+                    "title": "数量",
+                    "type": "string",
+                    "width": 15.0,
+                    "collection": false
+                  },
+                  {
+                    "name": "spec",
+                    "title": "规格",
+                    "type": "string",
+                    "width": 30.0,
+                    "collection": false
+                  },
+                  {
+                    "name": "express",
+                    "title": "已发物流",
+                    "type": "string",
+                    "width": 25.0,
+                    "collection": false
+                  },
+                  {
+                    "name": "remarks",
+                    "title": "备注",
+                    "type": "string",
+                    "width": 30.0,
+                    "collection": false
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "data": [
+        {
+          "index": 1,
+          "orderNumber": "M0012951670996945440604160",
+          "brand": "蜜雪冰城",
+          "company": "北京常氏装饰工程有限公司",
+          "shopCode": "943993",
+          "payMethod": "后付款",
+          "settleMethod": "货到结算",
+          "amount": 6639.43,
+          "number": 15,
+          "consignee": "赵阔",
+          "phone": "15670486929",
+          "time": "2024-10-12 17:20:26",
+          "approvalTime": "2024-10-12 17:27:46",
+          "payTime": "",
+          "deliveredTime": "",
+          "orderInfos": [
+            {
+              "index": 0,
+              "parentOrderNumber": "M0012951670996945440604160",
+              "orderNumber": "S0000001670996945788731392",
+              "brand": "蜜雪冰城",
+              "company": "北京常氏装饰工程有限公司",
+              "supplier": "京墨天和（天津）科技有限公司",
+              "shopCode": "943993",
+              "payMethod": "后付款",
+              "settleMethod": "货到结算",
+              "amount": 499.90,
+              "settleAmount": 499.90,
+              "refundAmount": "0.00",
+              "number": 2,
+              "shippedNumber": 0,
+              "consignee": "赵阔",
+              "phone": "15670486929",
+              "address": "江苏省宿迁市泗阳县众兴街道众兴镇众东城市之家110号",
+              "time": "2024-10-12 17:20:26",
+              "payTime": "",
+              "deliveredTime": "",
+              "signedTime": "",
+              "settlementTime": "",
+              "remarks": "",
+              "items": [
+                {
+                  "productName": "红色木质画框",
+                  "unit": "40.00/米",
+                  "number": 1,
+                  "spec": "尺寸: 长  10000;\r\n红色木制画框尺寸: 高120mm*厚度20mm   "
+                },
+                {
+                  "productName": "红色木质画框",
+                  "unit": "27.00/米",
+                  "number": 1,
+                  "spec": "尺寸: 长  3700;\r\n红色木制画框尺寸: 高50mm*厚度20mm   "
+                }
+              ],
+              "rowNum": 0,
+              "supplierId": 64
+            },
+            {
+              "index": 0,
+              "parentOrderNumber": "M0012951670996945440604160",
+              "orderNumber": "S0000001670996945797120000",
+              "brand": "蜜雪冰城",
+              "company": "北京常氏装饰工程有限公司",
+              "supplier": "美缇广告",
+              "shopCode": "943993",
+              "payMethod": "后付款",
+              "settleMethod": "货到结算",
+              "amount": 470.53,
+              "settleAmount": 470.53,
+              "refundAmount": "0.00",
+              "number": 2,
+              "shippedNumber": 0,
+              "consignee": "赵阔",
+              "phone": "15670486929",
+              "address": "江苏省宿迁市泗阳县众兴街道众兴镇众东城市之家110号",
+              "time": "2024-10-12 17:20:26",
+              "payTime": "",
+              "deliveredTime": "",
+              "signedTime": "",
+              "settlementTime": "",
+              "remarks": "",
+              "items": [
+                {
+                  "productName": "墙面装饰画（壁布）",
+                  "unit": "58.00/m²",
+                  "number": 1,
+                  "spec": "尺寸: 长  3700,宽  1680"
+                },
+                {
+                  "productName": "食品监督管理信息公示栏 ",
+                  "unit": "110.00/套",
+                  "number": 1,
+                  "spec": ""
+                }
+              ],
+              "rowNum": 0,
+              "supplierId": 7
+            },
+            {
+              "index": 0,
+              "parentOrderNumber": "M0012951670996945440604160",
+              "orderNumber": "S0000001670996945805508608",
+              "brand": "蜜雪冰城",
+              "company": "北京常氏装饰工程有限公司",
+              "supplier": "安徽利皖照明科技有限公司",
+              "shopCode": "943993",
+              "payMethod": "后付款",
+              "settleMethod": "货到结算",
+              "amount": 0.00,
+              "settleAmount": 0.00,
+              "refundAmount": "1080.00",
+              "number": 0,
+              "shippedNumber": 0,
+              "consignee": "赵阔",
+              "phone": "15670486929",
+              "address": "江苏省宿迁市泗阳县众兴街道众兴镇众东城市之家110号",
+              "time": "2024-10-12 17:20:26",
+              "payTime": "",
+              "deliveredTime": "",
+              "signedTime": "",
+              "settlementTime": "",
+              "remarks": "",
+              "items": [
+                {
+                  "productName": "风幕机FM-3015F",
+                  "unit": "540.00/台",
+                  "number": 0,
+                  "spec": ""
+                }
+              ],
+              "rowNum": 0,
+              "supplierId": 26
+            },
+            {
+              "index": 0,
+              "parentOrderNumber": "M0012951670996945440604160",
+              "orderNumber": "S0000001670996945813897216",
+              "brand": "蜜雪冰城",
+              "company": "北京常氏装饰工程有限公司",
+              "supplier": "福建省泉意广告标识有限公司",
+              "shopCode": "943993",
+              "payMethod": "后付款",
+              "settleMethod": "货到结算",
+              "amount": 684.00,
+              "settleAmount": 684.00,
+              "refundAmount": "0.00",
+              "number": 1,
+              "shippedNumber": 0,
+              "consignee": "赵阔",
+              "phone": "15670486929",
+              "address": "江苏省宿迁市泗阳县众兴街道众兴镇众东城市之家110号",
+              "time": "2024-10-12 17:20:26",
+              "payTime": "",
+              "deliveredTime": "",
+              "signedTime": "",
+              "settlementTime": "",
+              "remarks": "",
+              "items": [
+                {
+                  "productName": "雪王举冰淇淋",
+                  "unit": "684.00/个",
+                  "number": 1,
+                  "spec": "规格: 1850*1200*20mm  "
+                }
+              ],
+              "rowNum": 0,
+              "supplierId": 43
+            },
+            {
+              "index": 0,
+              "parentOrderNumber": "M0012951670996945440604160",
+              "orderNumber": "S0000001670996945822285824",
+              "brand": "蜜雪冰城",
+              "company": "北京常氏装饰工程有限公司",
+              "supplier": "开封市示范区中泰家具有限公司",
+              "shopCode": "943993",
+              "payMethod": "后付款",
+              "settleMethod": "货到结算",
+              "amount": 4985.00,
+              "settleAmount": 4985.00,
+              "refundAmount": "0.00",
+              "number": 10,
+              "shippedNumber": 0,
+              "consignee": "赵阔",
+              "phone": "15670486929",
+              "address": "江苏省宿迁市泗阳县众兴街道众兴镇众东城市之家110号",
+              "time": "2024-10-12 17:20:26",
+              "payTime": "",
+              "deliveredTime": "",
+              "signedTime": "",
+              "settlementTime": "",
+              "remarks": "",
+              "items": [
+                {
+                  "productName": "不锈钢圆桌",
+                  "unit": "380.00/个",
+                  "number": 3,
+                  "spec": ""
+                },
+                {
+                  "productName": "斜靠背卡座",
+                  "unit": "690.00/个",
+                  "number": 3,
+                  "spec": "产品名称: 8.2斜靠背1200卡座  ;\r\n规格: 1200*750*500  "
+                },
+                {
+                  "productName": "雪王椅",
+                  "unit": "320.00/个",
+                  "number": 3,
+                  "spec": ""
+                },
+                {
+                  "productName": "雪王点赞冰淇淋机挡板",
+                  "unit": "815.00/套",
+                  "number": 1,
+                  "spec": ""
+                }
+              ],
+              "rowNum": 0,
+              "supplierId": 15
+            }
+          ],
+          "rowNum": 0
+        }
+      ]
+    }
+  ]
+}

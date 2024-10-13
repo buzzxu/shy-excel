@@ -72,7 +72,8 @@ func setColumnTitle(f *excelize.File, sheetName string, headerStyle int, dept in
 			}
 		}
 		cell := axis(startRow, colIndex)
-
+		//设置单元格样式
+		column.cellStyleId = newStyleWithColumn(f, column)
 		if err := f.SetCellStr(sheetName, cell, column.Title); err != nil {
 			fmt.Println(err)
 		}

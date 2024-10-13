@@ -14,12 +14,22 @@ func newSheet(f *excelize.File, sheetIndex int, sheet *Sheet, consumer func(int,
 		fmt.Println(err)
 		return err
 	}
-	if sheet.Visible {
+	//是否隐藏
+	if !sheet.Visible {
 		err := f.SetSheetVisible(sheet.Name, false)
 		if err != nil {
 			fmt.Println(err)
 			return err
 		}
+	}
+
+	//冻结
+	if sheet.Header.FreezeCol != 0 {
+		//err := f.SetPanes(sheet.Name, &excelize.Panes{XSplit: sheet.Header.FreezeCol, YSplit: 0, TopLeftCell: "A1"})
+		//if err != nil {
+		//	fmt.Println(err)
+		//	return err
+		//}
 	}
 	layout(f, sheet)
 	margins(f, sheet)

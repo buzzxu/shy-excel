@@ -1,6 +1,8 @@
 package shyexcel
 
-import "reflect"
+import (
+	"reflect"
+)
 
 type Type string
 type ResponseType string
@@ -47,14 +49,17 @@ type Header struct {
 }
 
 type Column struct {
-	Name    string    `json:"name" msgpack:"name"`
-	Title   string    `json:"title" msgpack:"title"`
-	Type    Type      `json:"type" msgpack:"type"`
-	Merge   bool      `json:"merge,omitempty" msgpack:"merge"`
-	Font    *Font     `json:"font,omitempty" msgpack:"font"`
-	Width   float64   `json:"width,omitempty" msgpack:"width"`
-	Columns []*Column `json:"columns,omitempty" msgpack:"columns"`
-	dept    *int      `msgpack:"-"`
+	Name        string    `json:"name" msgpack:"name"`
+	Title       string    `json:"title" msgpack:"title"`
+	Type        Type      `json:"type" msgpack:"type"`
+	Merge       bool      `json:"merge,omitempty" msgpack:"merge"`
+	Font        *Font     `json:"font,omitempty" msgpack:"font"`
+	Width       float64   `json:"width,omitempty" msgpack:"width"`
+	Style       *Style    `json:"style,omitempty" msgpack:"style,omitempty"`
+	Collection  bool      `json:"collection" msgpack:"collection"`
+	Columns     []*Column `json:"columns,omitempty" msgpack:"columns"`
+	dept        *int      `msgpack:"-"`
+	cellStyleId int
 }
 
 type Data interface {
@@ -94,9 +99,10 @@ type Font struct {
 	VertAlign    *string  `json:"vertAlign,omitempty" msgpack:"vertAlign,omitempty"`
 }
 type Style struct {
-	Border []*Border `json:"border,omitempty" msgpack:"border,as_array,omitempty"`
-	Font   *Font     `json:"font,omitempty" msgpack:"font,omitempty"`
-	Fill   *Fill     `json:"fill,omitempty" msgpack:"fill,omitempty"`
+	Border    []*Border  `json:"border,omitempty" msgpack:"border,as_array,omitempty"`
+	Font      *Font      `json:"font,omitempty" msgpack:"font,omitempty"`
+	Fill      *Fill      `json:"fill,omitempty" msgpack:"fill,omitempty"`
+	Alignment *Alignment `json:"alignment,omitempty" msgpack:"alignment,omitempty"`
 }
 type Border struct {
 	Type  *string `json:"type,omitempty" msgpack:"type,omitempty"`
@@ -108,6 +114,15 @@ type Fill struct {
 	Pattern *int      `json:"pattern,omitempty" msgpack:"pattern,omitempty"`
 	Color   *[]string `json:"color,omitempty" msgpack:"color,as_array,omitempty"`
 	Shading *int      `json:"shading,omitempty" msgpack:"shading,omitempty"`
+}
+type Alignment struct {
+	Horizontal      *string `json:"horizontal" msgpack:"horizontal"` //水平对齐方式
+	Vertical        *string `json:"vertical" msgpack:"vertical"`
+	WrapText        bool    `json:"wrap" msgpack:"wrap"`
+	Indent          int     `json:"indent" msgpack:"indent"`                   // 缩进  只要设置了值，就变成了左对齐
+	JustifyLastLine bool    `json:"justifyLastLine" msgpack:"justifyLastLine"` // 两端分散对齐，只有在水平对齐选择 distributed 时起作用
+	ShrinkToFit     bool    `json:"shrinkToFit" msgpack:"shrinkToFit"`         //缩小字体填充
+	TextRotation    int     `json:"rotation" msgpack:"rotation"`               // 文本旋转
 }
 
 func (header *Header) Count() int {

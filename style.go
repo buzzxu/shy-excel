@@ -10,6 +10,7 @@ type DefStyleKeys int16
 const (
 	DefStyleKeys_Link      DefStyleKeys = 3
 	DefStyleKeys_Merge_ROW DefStyleKeys = 4
+	DefStyleKeys_WRAP_TEXT DefStyleKeys = 5
 )
 
 var DEF_STYLE map[DefStyleKeys]int
@@ -32,6 +33,7 @@ var DEF_STYLE_HYPERLINK = &excelize.Style{
 var DEF_STYLE_MERGE_ROW = &excelize.Style{
 	Alignment: &excelize.Alignment{
 		Vertical: "center",
+		WrapText: true,
 	},
 }
 
@@ -53,7 +55,15 @@ func defStyle(key DefStyleKeys, f *excelize.File) int {
 		case DefStyleKeys_Merge_ROW:
 			//默认合并单元格样式
 			style, _ = f.NewStyle(DEF_STYLE_MERGE_ROW)
-			DEF_STYLE[DefStyleKeys_Link] = style
+			DEF_STYLE[DefStyleKeys_Merge_ROW] = style
+		case DefStyleKeys_WRAP_TEXT:
+			//默认自动换行样式
+			style, _ = f.NewStyle(&excelize.Style{
+				Alignment: &excelize.Alignment{
+					WrapText: true,
+				},
+			})
+			DEF_STYLE[DefStyleKeys_WRAP_TEXT] = style
 		}
 		return style
 	}
@@ -80,6 +90,17 @@ func defStyleHeader(f *excelize.File, font *excelize.Font) int {
 
 func newStyle(f *excelize.File, style *Style) (int, error) {
 	return f.NewStyle(toStyle(style))
+}
+
+func newStyleWithColumn(f *excelize.File, column *Column) int {
+	if column.Style != nil {
+		styleId, err := newStyle(f, column.Style)
+		if err != nil {
+			return 0
+		}
+		return styleId
+	}
+	return 0
 }
 
 func toStyle(style *Style) *excelize.Style {
@@ -154,6 +175,29 @@ func toStyle(style *Style) *excelize.Style {
 				_fill.Shading = *style.Fill.Shading
 			}
 			_style.Fill = *_fill
+		}
+		if style.Alignment != nil {
+			var _alignment = &excelize.Alignment{}
+			_alignment.WrapText = style.Alignment.WrapText
+			if style.Alignment.Vertical != nil && *style.Alignment.Vertical != "" {
+				_alignment.Vertical = *style.Alignment.Vertical
+			}
+			if style.Alignment.Horizontal != nil && *style.Alignment.Horizontal != "" {
+				_alignment.Horizontal = *style.Alignment.Horizontal
+			}
+			if style.Alignment.Indent > 0 {
+				_alignment.Indent = style.Alignment.Indent
+			}
+			if style.Alignment.JustifyLastLine {
+				_alignment.JustifyLastLine = style.Alignment.JustifyLastLine
+			}
+			if style.Alignment.ShrinkToFit {
+				_alignment.ShrinkToFit = style.Alignment.ShrinkToFit
+			}
+			if style.Alignment.TextRotation > 0 {
+				_alignment.TextRotation = style.Alignment.TextRotation
+			}
+			_style.Alignment = _alignment
 		}
 	}
 	return _style
