@@ -33,7 +33,6 @@ var DEF_STYLE_HYPERLINK = &excelize.Style{
 var DEF_STYLE_MERGE_ROW = &excelize.Style{
 	Alignment: &excelize.Alignment{
 		Vertical: "center",
-		WrapText: true,
 	},
 }
 
@@ -43,7 +42,7 @@ func init() {
 
 // 获取默认样式
 func defStyle(key DefStyleKeys, f *excelize.File) int {
-	if style, ok := DEF_STYLE[DefStyleKeys_Link]; ok {
+	if style, ok := DEF_STYLE[key]; ok {
 		return style
 	} else {
 		var style int

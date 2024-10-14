@@ -105,22 +105,25 @@ func handleColumn(option *rowOption, column *Column, startRow, startCol int, col
 				return startRow, err
 			}
 		}
-		//设置单元格样式
-		if col.cellStyleId > 0 {
-			err := setCellStyle(option.f, option.sheetName, cell, col.cellStyleId)
+	}
+	//设置单元格样式
+	if col.cellStyleId > 0 {
+		err := setCellStyle(option.f, option.sheetName, cell, col.cellStyleId)
+		if err != nil {
+			return startRow, err
+		}
+	}
+	if option.rows > 0 {
+		vCell := axis(startRow+(option.rows-1), option.startCol+1)
+		option.f.MergeCell(option.sheetName, cell, vCell)
+		if col.cellStyleId == 0 {
+			//设置默认合并样式
+			err := option.f.SetCellStyle(option.sheetName, cell, vCell, defStyle(DefStyleKeys_Merge_ROW, option.f))
 			if err != nil {
 				return startRow, err
 			}
 		}
-	}
 
-	if option.rows > 0 {
-		vCell := axis(startRow+(option.rows-1), option.startCol+1)
-		option.f.MergeCell(option.sheetName, cell, vCell)
-		err := option.f.SetCellStyle(option.sheetName, cell, vCell, defStyle(DefStyleKeys_Merge_ROW, option.f))
-		if err != nil {
-			return startRow, err
-		}
 	}
 	option.startCol = option.startCol + 1
 
