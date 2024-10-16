@@ -5,7 +5,7 @@ go 1.23.2
 require (
 	github.com/json-iterator/go v1.1.12
 	github.com/vmihailenco/msgpack/v5 v5.4.1
-	github.com/xuri/excelize/v2 v2.8.1
+	github.com/xuri/excelize/v2 v2.9.0
 )
 
 require (
